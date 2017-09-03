@@ -2,11 +2,10 @@
 
 ## Features
 
-	-  automatically installs required packages
-	-  supports two themes (night and day) `C-=`
-	-  uses projectile to detect projects
-	-  automatically provides python completion and code navigation
-       within projects
+*  automatically installs required packages
+*  supports two themes (night and day) `C-=`
+*  uses projectile to detect projects
+*  automatically provides python completion and code navigation within projects
 
 ## Installation
 

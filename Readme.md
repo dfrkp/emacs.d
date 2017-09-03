@@ -9,6 +9,12 @@
 
 ## Installation
 
+Install emacs and then get the config:
 ``` shell
 git clone https://github.com/dfrkp/emacs.d.git ~/.emacs.d
 ```
+Run Emacs and wait for all the packages to be installed, then within emacs run:
+``` elisp
+jedi:install-server
+```
+

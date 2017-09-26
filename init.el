@@ -40,7 +40,7 @@
 (menu-bar-mode -1)
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-screen t)
-
+(setq visible-bell 1)
 (setq make-backup-files t)
 ;; Save all backup file in this directory.
 (setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
@@ -116,17 +116,3 @@ installed."
 
 (provide 'init)
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (magit tide sane-term python company-jedi projectile org-bullets org lua-mode rainbow-delimiters fill-column-indicator column-enforce-mode highlight-parentheses smart-mode-line zenburn-theme smex idomenu flx-ido flycheck erc-hl-nicks autopair iedit sunrise-commander dired+ company-flx company load-dir req-package use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

@@ -14,8 +14,13 @@ Install emacs and then get the config:
 git clone https://github.com/dfrkp/emacs.d.git ~/.emacs.d
 ```
 Run Emacs and wait for all the packages to be installed, then within emacs run:
+Python completion backend:
 ``` elisp
 jedi:install-server
+```
+C/C++ completion backend:
+``` elisp
+irony-install-server
 ```
 
 ## External dependencies

@@ -27,6 +27,11 @@
       (setenv "PATH" (concat "c:/cygwin/bin;" (getenv "PATH")))
       (setq exec-path (cons "c:/cygwin/bin" exec-path))
       (setq w32-get-true-file-attributes nil)
+      (when (boundp 'w32-pipe-read-delay)
+	(setq w32-pipe-read-delay 0))
+      ;; Set the buffer size to 64K on Windows (from the original 4K)
+      (when (boundp 'w32-pipe-buffer-size)
+	(setq irony-server-w32-pipe-buffer-size (* 64 1024)))
       )
   (progn
     (setq select-enable-clipboard t)
@@ -116,3 +121,17 @@ installed."
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (js2-mode json-mode web-mode irony-eldoc flycheck-irony company-irony zenburn-theme tide sunrise-commander smex smart-mode-line sane-term req-package rainbow-delimiters python projectile org-bullets org markdown-mode magit lua-mode load-dir iedit idomenu highlight-parentheses flx-ido fill-column-indicator erc-hl-nicks dired+ company-jedi company-flx column-enforce-mode autopair))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

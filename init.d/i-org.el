@@ -8,7 +8,7 @@
 	     :bind (("C-c l" . org-store-link)
 		    ("C-c c" . org-capture)
 		    ("C-c a" . org-agenda)
-		    ("C-c b" . orb-ido-switchb))
+		    ("C-c b" . org-iswitchb))
 	     :config
 	     (setq org-directory (concat dropbox-directory "org/"))
 	     (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))

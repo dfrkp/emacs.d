@@ -3,7 +3,7 @@
 
 ;;; Code:
 
-; (package-initialize)
+					; (package-initialize)
 (require 'package)
 ;; Read init file before loading packages
 (setq package-enable-at-startup nil)
@@ -103,17 +103,36 @@ installed."
 (req-package--log-set-level 'trace)
 
 ;; init.d
-(random t)
-(req-package load-dir
-  :force true
-  :init
-  (setq force-load-messages nil)
-  (setq load-dir-debug t)
-  (setq load-dir-recursive t)
-  :config
-  (load-dir-one my-init-dir)
-  (req-package-finish))
-
+(dolist (i-file '(
+		  "i-ccode.el"
+		  "i-completion.el"
+		  "i-dirnav.el"
+		  "i-editing.el"
+		  "i-erc.el"
+		  "i-fix-mark-command.el"
+		  "i-flycheck.el"
+		  "i-ido-smex.el"
+		  "i-insert-file-name-in-buffer.el"
+		  "i-look-and-feel.el"
+		  "i-lua.el"
+		  "i-markdown.el"
+		  "i-org.el"
+		  "i-osx.el"
+		  "i-projects.el"
+		  "i-python.el"
+		  "i-term.el"
+		  "i-tex.el"
+		  "i-typescript.el"
+		  "i-vcs.el"
+		  "i-web.el")
+		)
+  (message "Loading %s ..." i-file)
+  (load-file
+   (concat
+    my-init-dir
+    "/"
+    i-file)))
+(req-package-finish)
 ;;; * Global Key bindings
 (global-set-key [f3] 'flyspell-mode)
 (global-set-key [f8] 'comment-region)
@@ -128,7 +147,8 @@ installed."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (js2-mode json-mode web-mode irony-eldoc flycheck-irony company-irony zenburn-theme tide sunrise-commander smex smart-mode-line sane-term req-package rainbow-delimiters python projectile org-bullets org markdown-mode magit lua-mode load-dir iedit idomenu highlight-parentheses flx-ido fill-column-indicator erc-hl-nicks dired+ company-jedi company-flx column-enforce-mode autopair))))
+    (js2-mode json-mode web-mode irony-eldoc flycheck-irony company-irony zenburn-theme tide sunrise-commander smex smart-mode-line sane-term req-package rainbow-delimiters python projectile org-bullets org markdown-mode magit lua-mode load-dir iedit idomenu highlight-parentheses flx-ido fill-column-indicator erc-hl-nicks dired+ company-jedi company-flx column-enforce-mode autopair)))
+ '(safe-local-variable-values (quote ((TeX-PDF-mode . t) (TeX-master . t)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

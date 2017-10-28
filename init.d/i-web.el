@@ -24,7 +24,11 @@
 
 (req-package js2-mode
   :config
-  (setq js2-basic-offset 2))
+  (setq js2-basic-offset 2)
+  (add-hook 'js2-mode-hook
+	    (lambda () (progn
+			 (set-variable 'indent-tabs-mode nil))))
+  )
 
 (provide 'i-web)
 ;;; i-web.el ends here

@@ -30,6 +30,14 @@
 			 (set-variable 'indent-tabs-mode nil))))
   )
 
+(req-package kubernetes)
+(req-package yaml-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+
+(req-package dockerfile-mode
+  :config
+  (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 (provide 'i-web)
 ;;; i-web.el ends here
 

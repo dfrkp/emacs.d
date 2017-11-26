@@ -26,16 +26,10 @@
 	     (setq org-default-notes-file (concat org-directory "todo.org"))
 	     (setq org-capture-templates
 		   '(
-		     ("t" "Todo" entry (file+headline (concat org-directory "todo.org") "TODO-List")
+		     ("t" "Todo" entry (file+headline "~/Dropbox/org/todo.org" "TODO-List")
 		      "* TODO %?\n  SCHEDULED: %t")
-		     ("p" "Personal Todo" entry (file+headline (concat org-directory "private.org") "TODO-List")
+		     ("p" "Personal Todo" entry (file+headline "~/Dropbox/org/private.org" "TODO-List")
 		      "* TODO %?\n  SCHEDULED: %t")
-		     ("i" "Issue" entry (file+headline (concat org-directory "todo.org") "New Issues")
-		      "* TODO create Issue: %?\n  SCHEDULED: %t")
-		     ("c" "Code Comment" entry (file+headline (concat org-directory "code.org") "General")
-		      "* TODO %?%^g\n  %a\n  | Reviewer: | %n |\n  | Date: | %T |")
-		     ("j" "Journal" entry (file+datetree (concat org-directory "journal.org"))
-		      "* %?\n%a")
 		     )
 		   )
 
@@ -57,7 +51,12 @@
 	     :config
 	     (add-hook 'org-mode-hook 'org-bullets-mode))
 
+(req-package plantuml-mode
+  :config
+  (add-to-list
+   'org-src-lang-modes '("plantuml" . plantuml)))
 
+(req-package htmlize)
 
 (provide 'i-org)
 ;;; i-org.el ends here

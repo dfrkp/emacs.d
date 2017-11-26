@@ -24,8 +24,6 @@
 	  ad-do-it))
       (ad-activate 'grep-compute-defaults)
       ;; setup cygwin environment
-      (setenv "PATH" (concat "c:/cygwin/bin;" (getenv "PATH")))
-      (setq exec-path (cons "c:/cygwin/bin" exec-path))
       (setq w32-get-true-file-attributes nil)
       (when (boundp 'w32-pipe-read-delay)
 	(setq w32-pipe-read-delay 0))
@@ -147,8 +145,7 @@ installed."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (js2-mode json-mode web-mode irony-eldoc flycheck-irony company-irony zenburn-theme tide sunrise-commander smex smart-mode-line sane-term req-package rainbow-delimiters python projectile org-bullets org markdown-mode magit lua-mode load-dir iedit idomenu highlight-parentheses flx-ido fill-column-indicator erc-hl-nicks dired+ company-jedi company-flx column-enforce-mode autopair)))
- '(safe-local-variable-values (quote ((TeX-PDF-mode . t) (TeX-master . t)))))
+    (auctex ggtags zenburn-theme yaml-mode tide sunrise-commander smex smart-mode-line sane-term rjsx-mode req-package rainbow-delimiters python projectile plantuml-mode org-bullets org markdown-mode lua-mode kubernetes json-mode irony-eldoc iedit idomenu htmlize highlight-parentheses flycheck-irony flx-ido fill-column-indicator erc-hl-nicks dumb-jump dockerfile-mode dired+ company-jedi company-irony company-flx column-enforce-mode autopair))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

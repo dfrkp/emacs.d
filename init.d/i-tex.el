@@ -4,7 +4,7 @@
 ;;; Code:
 (require 'req-package)
 
-(req-package tex
+(req-package auctex
 	     :config
 	     (TeX-global-PDF-mode t))
 

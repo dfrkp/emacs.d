@@ -37,7 +37,7 @@
 ;;   )
 
 (req-package ggtags
-  :loader :elpa
+  :pin elpa
   :config
   (add-hook 'c-mode-common-hook
           (lambda ()

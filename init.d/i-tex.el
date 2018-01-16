@@ -5,8 +5,9 @@
 (require 'req-package)
 
 (req-package auctex
-	     :config
-	     (TeX-global-PDF-mode t))
+  :pin elpa
+  :config
+  (TeX-global-PDF-mode t))
 
 (provide 'i-tex)
 ;;; i-tex.el ends here

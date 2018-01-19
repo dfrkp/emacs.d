@@ -135,20 +135,7 @@ installed."
 (global-set-key [f3] 'flyspell-mode)
 (global-set-key [f8] 'comment-region)
 
+(set-frame-font "Inconsolata-12")
 
 (provide 'init)
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (auctex ggtags zenburn-theme yaml-mode tide sunrise-commander smex smart-mode-line sane-term rjsx-mode req-package rainbow-delimiters python projectile plantuml-mode org-bullets org markdown-mode lua-mode kubernetes json-mode irony-eldoc iedit idomenu htmlize highlight-parentheses flycheck-irony flx-ido fill-column-indicator erc-hl-nicks dumb-jump dockerfile-mode dired+ company-jedi company-irony company-flx column-enforce-mode autopair))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

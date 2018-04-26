@@ -37,7 +37,7 @@
 ;;   )
 
 (req-package ggtags
-  :pin elpa
+  :ensure t
   :config
   (add-hook 'c-mode-common-hook
           (lambda ()
@@ -45,6 +45,7 @@
               (ggtags-mode 1)))))
 
 (req-package cmake-mode
+  :ensure t
   :mode "CMakeLists\\.txt\\'")
 
 (provide 'i-ccode)

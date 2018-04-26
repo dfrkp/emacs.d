@@ -5,7 +5,7 @@
 (require 'req-package)
 
 (req-package auctex
-  :pin elpa
+  :ensure t
   :config
   (TeX-global-PDF-mode t))
 

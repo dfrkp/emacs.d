@@ -5,6 +5,7 @@
 (require 'req-package)
 
 (req-package magit
+  :ensure t
   :bind (("C-x g" . magit-status))
   :config
   (setq magit-process-popup-time 2)

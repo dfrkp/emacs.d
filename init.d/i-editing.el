@@ -5,7 +5,8 @@
 (require 'req-package)
 
 (req-package iedit
-	     :bind (("C-;" . iedit-mode)))
+  :ensure t
+  :bind (("C-;" . iedit-mode)))
 
 ;; WindMove
 (windmove-default-keybindings)
@@ -15,8 +16,9 @@
 (global-set-key (kbd "C-S-N") 'windmove-down)
 
 (req-package autopair
-	     :config
-	     (autopair-global-mode))
+  :ensure t
+  :config
+  (autopair-global-mode))
 
 (provide 'i-editing)
 ;;; i-editing.el ends here

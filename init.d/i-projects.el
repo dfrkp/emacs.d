@@ -5,6 +5,8 @@
 (require 'req-package)
 
 (req-package projectile
+  :ensure t
+  
   :config
   (setq projectile-mode-line
 	'(:eval (format " Projectile[%s]"

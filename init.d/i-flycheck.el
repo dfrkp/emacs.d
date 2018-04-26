@@ -5,6 +5,7 @@
 (require 'req-package)
 
 (req-package flycheck
+  :ensure t
   :config
   (global-flycheck-mode 1)
   (setq flycheck-highlighting-mode 'symbols)

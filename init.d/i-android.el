@@ -4,7 +4,8 @@
 ;;; Code:
 (require 'req-package)
 
-(req-package groovy-mode)
+(req-package groovy-mode
+  :ensure t)
 
 (provide 'i-android)
 ;;; i-android.el ends here

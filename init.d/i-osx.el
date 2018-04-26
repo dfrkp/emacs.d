@@ -25,6 +25,7 @@
 (when (memq window-system '(mac ns))
   (setq insert-directory-program "gls")
   (req-package exec-path-from-shell
+    :ensure t
     :init
     (exec-path-from-shell-initialize))
   )

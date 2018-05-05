@@ -61,7 +61,6 @@
 (require 'package)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives '("sunrise" . "http://joseito.republika.pl/sunrise-commander/"))
 
 (defconst my-init-dir "~/.emacs.d/init.d")
 
@@ -125,8 +124,6 @@ installed."
 ;;; * Global Key bindings
 (global-set-key [f3] 'flyspell-mode)
 (global-set-key [f8] 'comment-region)
-
-(set-frame-font "Inconsolata-12")
 
 (provide 'init)
 ;;; init.el ends here

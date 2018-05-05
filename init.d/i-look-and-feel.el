@@ -8,9 +8,12 @@
 
 (req-package zenburn-theme
   :ensure t
-  
+  :require doom-themes
   :init
-  (defvar my-themes '(zenburn tsdh-light))
+  (defvar my-themes '(zenburn doom-solarized-light doom-spacegrey))
+  ;; other dark themes: doom-one doom-dracula doom-peacock
+  ;; other theme options I don't like as much: doom-molokai,
+  ;; doom-city-lights, doom-nord (breaks!)
   (defvar my-cur-theme nil)
   (defun cycle-my-theme ()
     "Cycle through a list of themes, my-themes."
@@ -19,10 +22,14 @@
       (disable-theme my-cur-theme)
       (setq my-themes (append my-themes (list my-cur-theme))))
     (setq my-cur-theme (pop my-themes))
+    (message (format "Switching to theme %s..." my-cur-theme))
     (load-theme my-cur-theme t))
   (cycle-my-theme)
   :bind (("C-=" . cycle-my-theme))
   )
+
+(req-package doom-themes
+  :ensure t)
 
 ;; Mode-line
 (req-package smart-mode-line
@@ -68,6 +75,7 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+(set-frame-font "Inconsolata-16")
 
 (provide 'i-look-and-feel)
 ;;; i-look-and-feel.el ends here

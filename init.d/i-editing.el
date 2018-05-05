@@ -20,6 +20,11 @@
   :config
   (autopair-global-mode))
 
+(req-package move-text
+  :ensure t
+  :config
+  (move-text-default-bindings))
+
 (provide 'i-editing)
 ;;; i-editing.el ends here
 

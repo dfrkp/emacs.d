@@ -64,6 +64,22 @@
   :ensure t
   :config
   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
+
+;;; Terraform
+(req-package terraform-mode
+  :ensure t
+  :config
+  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
+
+(req-package company-terraform
+  :ensure t
+  :require terraform-mode
+  :config
+  (company-terraform-init))
+
+(req-package docker
+    :ensure t)
+
 (provide 'i-web)
 ;;; i-web.el ends here
 

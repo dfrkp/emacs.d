@@ -6,6 +6,7 @@
 
 (req-package auctex
   :ensure t
+  :defer t
   :config
   (TeX-global-PDF-mode t))
 

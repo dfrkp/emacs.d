@@ -84,24 +84,27 @@ installed."
 (require-package 'req-package)
 (require 'req-package)
 (req-package--log-set-level 'trace)
-;; (req-package el-get
-;;   :force t
-;;   :config
-;;   (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/el-get/recipes")
-;;   (el-get 'sync))
+(req-package el-get
+  :force t
+  :config
+  (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/el-get/recipes")
+  (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+  (el-get 'sync))
 
 ;; init.d
 (dolist (i-file '(
-		  "i-ccode.el"
+		  "i-ido-smex.el"
 		  "i-completion.el"
+		  "i-look-and-feel.el"
+		  "i-auto-update.el"
+		  "i-android.el"
+		  "i-ccode.el"
 		  "i-dirnav.el"
 		  "i-editing.el"
 		  "i-erc.el"
 		  "i-fix-mark-command.el"
 		  "i-flycheck.el"
-		  "i-ido-smex.el"
 		  "i-insert-file-name-in-buffer.el"
-		  "i-look-and-feel.el"
 		  "i-lua.el"
 		  "i-markdown.el"
 		  "i-org.el"
@@ -121,6 +124,7 @@ installed."
     "/"
     i-file)))
 (req-package-finish)
+
 ;;; * Global Key bindings
 (global-set-key [f3] 'flyspell-mode)
 (global-set-key [f8] 'comment-region)

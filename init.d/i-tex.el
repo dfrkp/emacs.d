@@ -4,9 +4,8 @@
 ;;; Code:
 (require 'req-package)
 
-(req-package auctex
-  :ensure t
-  :defer t
+(req-package tex
+  :ensure auctex
   :config
   (TeX-global-PDF-mode t))
 

@@ -6,6 +6,8 @@
 *  supports two themes (night and day) `C-=`
 *  uses projectile to detect projects
 *  automatically provides python completion and code navigation within projects
+*  for git repo control use magit `C-x g`
+*  for file browsing use sunrise command `C-x s`
 
 ## Installation
 

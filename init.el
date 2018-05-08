@@ -113,7 +113,6 @@ installed."
 		  "i-python.el"
 		  "i-term.el"
 		  "i-tex.el"
-		  "i-typescript.el"
 		  "i-vcs.el"
 		  "i-web.el")
 		)

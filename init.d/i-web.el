@@ -1,4 +1,4 @@
-;;; i-web.el --- react
+;;; i-web.el --- react, typescript, json
 ;;; Commentary:
 
 ;;; Code:
@@ -54,7 +54,7 @@
 
 (req-package kubernetes
   :ensure t)
-  
+
 (req-package yaml-mode
   :ensure t
   :config
@@ -78,7 +78,30 @@
   (company-terraform-init))
 
 (req-package docker
-    :ensure t)
+  :ensure t)
+
+;;; Typescript
+(req-package tide
+  :ensure t
+  :require company
+  :config
+  (defun setup-tide-mode ()
+    (interactive)
+    (tide-setup)
+    (flycheck-mode +1)
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))
+    (eldoc-mode +1)
+    (tide-hl-identifier-mode +1)
+    ;; company is an optional dependency. You have to
+    ;; install it separately via package-install
+    ;; `M-x package-install [ret] company`
+    (company-mode +1))
+  ;; formats the buffer before saving
+  (add-hook 'before-save-hook 'tide-format-before-save)
+  (add-hook 'typescript-mode-hook #'setup-tide-mode)
+  )
+
+
 
 (provide 'i-web)
 ;;; i-web.el ends here

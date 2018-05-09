@@ -1,4 +1,4 @@
-;;; i-web.el --- react, typescript, json
+;;; i-web.el --- react, typescript, json, docker, terraform
 ;;; Commentary:
 
 ;;; Code:
@@ -26,11 +26,11 @@
 
 (req-package js2-mode
   :ensure t
-  
   :config
   (setq js2-basic-offset 2)
   (setq js2-strict-trailing-comma-warning nil)
 
+  (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
   (add-hook 'js2-mode-hook
 	    (lambda () (progn
 			 (set-variable 'indent-tabs-mode nil))))
@@ -80,10 +80,9 @@
 (req-package docker
   :ensure t)
 
-;;; Typescript
 (req-package tide
   :ensure t
-  :require company
+  :require company js2-mode
   :config
   (defun setup-tide-mode ()
     (interactive)
@@ -99,6 +98,7 @@
   ;; formats the buffer before saving
   (add-hook 'before-save-hook 'tide-format-before-save)
   (add-hook 'typescript-mode-hook #'setup-tide-mode)
+  (add-hook 'js2-mode-hook #'setup-tide-mode)
   )
 
 

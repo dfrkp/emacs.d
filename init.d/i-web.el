@@ -82,7 +82,7 @@
 
 (req-package tide
   :ensure t
-  :require company js2-mode
+  :require company js2-mode flycheck
   :config
   (defun setup-tide-mode ()
     (interactive)
@@ -99,6 +99,7 @@
   (add-hook 'before-save-hook 'tide-format-before-save)
   (add-hook 'typescript-mode-hook #'setup-tide-mode)
   (add-hook 'js2-mode-hook #'setup-tide-mode)
+  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
   )
 
 

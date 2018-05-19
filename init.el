@@ -81,9 +81,22 @@ installed."
              (require package))))
 
 ;; req-package
+
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil 'noerror)
+  (require 'package)
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.org/packages/"))
+  (package-refresh-contents)
+  (package-initialize)
+  (package-install 'el-get)
+  (require 'el-get))
+
 (require-package 'req-package)
 (require 'req-package)
 (req-package--log-set-level 'trace)
+
 (req-package el-get
   :force t
   :config

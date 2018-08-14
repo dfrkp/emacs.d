@@ -11,7 +11,8 @@
   (setq projectile-mode-line
 	'(:eval (format " Projectile[%s]"
                         (projectile-project-name))))
-  (projectile-global-mode))
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 (provide 'i-projects)
 ;;; i-projects.el ends here

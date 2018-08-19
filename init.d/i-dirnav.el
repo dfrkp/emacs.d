@@ -6,7 +6,7 @@
 
 (req-package sunrise-commander
   :el-get t
-  :bind (("C-x s" . sunrise-cd))
+  :bind (("C-x s" . sunrise))
   :config
   (setq sr-autoload-extensions nil)
   (setq sr-show-file-attributes nil)

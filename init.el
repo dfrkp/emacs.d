@@ -2,20 +2,18 @@
 ;;; Commentary:
 
 ;;; Code:
-
 					; (package-initialize)
 (require 'package)
 ;; Read init file before loading packages
 (setq package-enable-at-startup nil)
 
-(defvar dropbox-directory "~/Dropbox/")
+;; global config
+(defconst dropbox-directory "~/Dropbox/")
+(defconst my-init-dir "~/.emacs.d/init.d")
 
-
-;; Host dependent stuff
-
-;; Windows
+;; Windows special treatment
 (if (string-equal system-type "windows-nt")
-    (progn
+    (progn ;; true => Windows
       ;; Prevent issues with the Windows null device (NUL)
       ;; when using cygwin find with rgrep.
       (defadvice grep-compute-defaults (around grep-compute-defaults-advice-null-device)
@@ -31,26 +29,11 @@
       (when (boundp 'w32-pipe-buffer-size)
 	(setq irony-server-w32-pipe-buffer-size (* 64 1024)))
       )
-  (progn
+  (progn ;; false => MacOS
     (setq select-enable-clipboard t)
     (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
     )
   )
-
-;; Basics
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(menu-bar-mode -1)
-(setq inhibit-splash-screen t)
-(setq inhibit-startup-screen t)
-(setq visible-bell 1)
-(setq make-backup-files t)
-;; Save all backup file in this directory.
-(setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
-(setq delete-old-versions t
-      kept-new-versions 6
-      kept-old-versions 2
-      version-control t)
 
 ;; start emacs server
 (require 'server)
@@ -60,9 +43,9 @@
 ;; Package Manager
 (require 'package)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-(defconst my-init-dir "~/.emacs.d/init.d")
 
 (eval-when-compile (package-initialize))
 
@@ -80,18 +63,16 @@ installed."
                    (package-install package)))
              (require package))))
 
-;; req-package
+;;;; el-get error workaround
+;; ;; req-package
+;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
-(unless (require 'el-get nil 'noerror)
-  (require 'package)
-  (add-to-list 'package-archives
-               '("melpa" . "http://melpa.org/packages/"))
-  (package-refresh-contents)
-  (package-initialize)
-  (package-install 'el-get)
-  (require 'el-get))
+;; (unless (require 'el-get nil 'noerror)
+;;   (require 'package)
+;;   (package-refresh-contents)
+;;   (package-initialize)
+;;   (package-install 'el-get)
+;;   (require 'el-get))
 
 (require-package 'req-package)
 (require 'req-package)
@@ -136,10 +117,6 @@ installed."
     "/"
     i-file)))
 (req-package-finish)
-
-;;; * Global Key bindings
-(global-set-key [f3] 'flyspell-mode)
-(global-set-key [f8] 'comment-region)
 
 (provide 'init)
 ;;; init.el ends here

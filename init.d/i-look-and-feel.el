@@ -4,8 +4,24 @@
 ;;; Code:
 (require 'req-package)
 
-;; Cycle through this set of themes
+;; Basics
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-screen t)
+(setq visible-bell 1)
 
+;; Backups
+(setq make-backup-files t)
+;; Save all backup file in this directory.
+(setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+(setq delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+
+;; Cycle through this set of themes
 (req-package zenburn-theme
   :ensure t
   :require doom-themes

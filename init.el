@@ -44,8 +44,7 @@
 (require 'package)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-
+	     '("melpa" . "https://melpa.org/packages/") t)
 
 (eval-when-compile (package-initialize))
 

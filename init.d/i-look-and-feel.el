@@ -91,7 +91,7 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
-(set-frame-font "Inconsolata-16")
+(set-frame-font "Inconsolata-14")
 
 (provide 'i-look-and-feel)
 ;;; i-look-and-feel.el ends here

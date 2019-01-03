@@ -63,27 +63,9 @@ installed."
                    (package-install package)))
              (require package))))
 
-;;;; el-get error workaround
-;; ;; req-package
-;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
-;; (unless (require 'el-get nil 'noerror)
-;;   (require 'package)
-;;   (package-refresh-contents)
-;;   (package-initialize)
-;;   (package-install 'el-get)
-;;   (require 'el-get))
-
 (require-package 'req-package)
 (require 'req-package)
 (req-package--log-set-level 'trace)
-
-(req-package el-get
-  :force t
-  :config
-  (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/el-get/recipes")
-  (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-  (el-get 'sync))
 
 ;; init.d
 (dolist (i-file '(

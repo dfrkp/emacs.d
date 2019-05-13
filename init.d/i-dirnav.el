@@ -5,6 +5,7 @@
 (require 'req-package)
 
 (setq dired-listing-switches "-ABhlD --group-directories-first")
+(setq dired-dwim-target t)
 
 (if (string-equal system-type "windows-nt")
     (progn

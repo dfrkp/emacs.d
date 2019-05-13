@@ -25,6 +25,27 @@
   :config
   (move-text-default-bindings))
 
+;; Buffers are edited in `text-mode' by default; to use a different
+;; major mode, change `edit-server-default-major-mode' or customize
+;; `edit-server-url-major-mode-alist' to specify major modes based
+;; on the remote URL:
+
+;;   (setq edit-server-url-major-mode-alist
+;;         '(("github\\.com" . markdown-mode)))
+
+;; Alternatively, set the mode in `edit-server-start-hook'.  For
+;; example:
+
+;; (add-hook 'edit-server-start-hook
+;;           (lambda ()
+;;             (when (string-match "github.com" (buffer-name))
+;;               (markdown-mode))))
+(req-package edit-server
+  :ensure t
+  :config
+  (setq edit-server-new-frame nil)
+  (edit-server-start))
+
 (provide 'i-editing)
 ;;; i-editing.el ends here
 

@@ -34,7 +34,7 @@
       )
   )
 
-(use-package dired-toggle
+(req-package dired-toggle
   :ensure t
   :defer t
   :bind (("C-x s" . #'dired-toggle)
@@ -53,6 +53,12 @@
               (visual-line-mode 1)
               (setq-local visual-line-fringe-indicators '(nil right-curly-arrow))
               (setq-local word-wrap nil))))
+
+(req-package crux
+  :ensure t
+  :bind (("C-c o" . #'crux-open-with))
+)
+
 
 (provide 'i-dirnav)
 ;;; i-dirnav.el ends here

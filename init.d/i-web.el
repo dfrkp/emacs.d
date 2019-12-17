@@ -102,7 +102,8 @@
   (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
   )
 
-
+(req-package graphql-mode
+  :ensure t)
 
 (provide 'i-web)
 ;;; i-web.el ends here

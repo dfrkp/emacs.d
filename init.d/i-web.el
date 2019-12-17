@@ -8,7 +8,7 @@
   :ensure t
   :require flycheck
   :config
-  (add-to-list 'auto-mode-alist '("\\.jsx?$" . rjsx-mode))
+  (add-to-list 'auto-mode-alist '("\\.\\(jsx?\\|tsx?\\)$" . rjsx-mode))
   (setq-default flycheck-disabled-checkers
   		(append flycheck-disabled-checkers
   			'(javascript-jshint)))

@@ -58,7 +58,9 @@
   :ensure t
   :config
   (add-to-list
-   'org-src-lang-modes '("plantuml" . plantuml)))
+   'org-src-lang-modes '("plantuml" . plantuml))
+  (setq plantuml-default-exec-mode 'executable)
+  )
 
 (req-package htmlize
   :ensure t)

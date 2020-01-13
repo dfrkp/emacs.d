@@ -10,6 +10,7 @@
 ;; global config
 (defconst dropbox-directory "~/Dropbox/")
 (defconst my-init-dir "~/.emacs.d/init.d")
+(setq bookmark-default-file (concat dropbox-directory "org/bookmarks.bmk"))
 
 ;; Windows special treatment
 (if (string-equal system-type "windows-nt")

@@ -45,8 +45,7 @@
   (setq org-outline-path-complete-in-steps nil)         ; Refile in a single go
   (setq org-refile-use-outline-path t)                  ; Show full paths for refiling
   (setq initial-major-mode 'org-mode)
-  (setq bookmark-default-file (concat org-directory "bookmarks.bmk"))
-  (setq org-export-backends
+    (setq org-export-backends
     '(ascii beamer html latex md odt confluence koma-letter)))
 
 (req-package org-bullets

@@ -46,7 +46,14 @@
   (setq org-refile-use-outline-path t)                  ; Show full paths for refiling
   (setq initial-major-mode 'org-mode)
     (setq org-export-backends
-    '(ascii beamer html latex md odt confluence koma-letter)))
+
+	  '(ascii reveal html latex md odt confluence koma-letter)))
+
+(req-package ox-reveal
+  :ensure t
+  :require org
+  :config
+  (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"))
 
 (req-package org-bullets
   :ensure t
@@ -59,7 +66,7 @@
   :config
   (add-to-list
    'org-src-lang-modes '("plantuml" . plantuml))
-  (setq plantuml-default-exec-mode 'executable)
+  (plantuml-set-exec-mode 'executable)
   )
 
 (req-package htmlize

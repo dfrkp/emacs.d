@@ -52,8 +52,11 @@
   :ensure t
   
   :config
+  (display-battery-mode 1)
+  (display-time-mode 1)
   (setq sml/no-confirm-load-theme t)
   (add-hook 'after-init-hook 'sml/setup))
+
 
 ;; highlight matching parantheses
 (req-package highlight-parentheses

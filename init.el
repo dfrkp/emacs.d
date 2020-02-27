@@ -91,7 +91,9 @@ installed."
 		  "i-term.el"
 		  "i-tex.el"
 		  "i-vcs.el"
-		  "i-web.el")
+		  "i-web.el"
+		  "i-php.el"
+		  "i-rust.el")
 		)
   (message "Loading %s ..." i-file)
   (load-file

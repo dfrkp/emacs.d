@@ -9,7 +9,7 @@
 
 (require 'dired-x)
 (setq-default dired-omit-files-p t) ; Buffer-local variable
-(setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+(setq dired-omit-files (concat dired-omit-files "\\|^\\..+$\\|^Icon.$"))
 
 (add-hook 'dired-mode-hook
       (lambda ()
@@ -35,7 +35,7 @@
   )
 
 (req-package treemacs-icons-dired
-  :after treemacs dired
+  :after dired
   :ensure t
   :config (treemacs-icons-dired-mode))
 

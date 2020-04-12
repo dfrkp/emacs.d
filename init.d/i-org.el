@@ -45,9 +45,26 @@
   (setq org-outline-path-complete-in-steps nil)         ; Refile in a single go
   (setq org-refile-use-outline-path t)                  ; Show full paths for refiling
   (setq initial-major-mode 'org-mode)
-    (setq org-export-backends
-
-	  '(ascii reveal html latex md odt confluence koma-letter)))
+  ;;; support koma report (scrreprt)
+  (with-eval-after-load 'ox-latex
+    (add-to-list 'org-latex-classes
+                 '("scrreprt"
+                   "\\documentclass{scrreprt}
+                    \\usepackage[utf8]{inputenc}
+                    [PACKAGES]
+                    [EXTRA]"
+		   ("\\chapter{%s}" . "\\chapter*{%s}")
+                   ("\\section{%s}" . "\\section*{%s}")
+                   ("\\subsection{%s}" . "\\subsection*{%s}")
+                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                   ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                   ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+  ;;;                     [NO-DEFAULT-PACKAGES]
+  (add-hook 'org-mode-hook 'auto-fill-mode)
+  (add-hook 'org-mode-hook 'flyspell-mode)
+  (setq org-export-backends
+	'(ascii reveal html latex md))
+  )
 
 (req-package ox-reveal
   :ensure t

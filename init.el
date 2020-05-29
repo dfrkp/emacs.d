@@ -93,7 +93,9 @@ installed."
 		  "i-vcs.el"
 		  "i-web.el"
 		  "i-php.el"
-		  "i-rust.el")
+		  "i-rust.el"
+		  "i-kotlin.el"
+		  )
 		)
   (message "Loading %s ..." i-file)
   (load-file

@@ -24,12 +24,9 @@
 ;; Cycle through this set of themes
 (req-package zenburn-theme
   :ensure t
-  :require doom-themes
+  :require leuven-theme
   :init
-  (defvar my-themes '(zenburn doom-solarized-light doom-spacegrey))
-  ;; other dark themes: doom-one doom-dracula doom-peacock
-  ;; other theme options I don't like as much: doom-molokai,
-  ;; doom-city-lights, doom-nord (breaks!)
+  (defvar my-themes '(zenburn leuven))
   (defvar my-cur-theme nil)
   (defun cycle-my-theme ()
     "Cycle through a list of themes, my-themes."
@@ -41,10 +38,13 @@
     (message (format "Switching to theme %s..." my-cur-theme))
     (load-theme my-cur-theme t))
   (cycle-my-theme)
+  (cycle-my-theme)
+  (cycle-my-theme) ;; apparently this helps to ensure the faces are
+		   ;; reset properly after loading leuven
   :bind (("C-=" . cycle-my-theme))
   )
 
-(req-package doom-themes
+(req-package leuven-theme
   :ensure t)
 
 ;; Mode-line

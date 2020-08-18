@@ -14,6 +14,7 @@
   (setq org-directory (concat dropbox-directory "org/"))
   (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
   (add-to-list 'auto-mode-alist '("\\.txt\\'" . org-mode))
+  (add-hook 'org-agenda-mode-hook (lambda () (hl-line-mode 1)))
   (add-hook 'org-mode-hook 'turn-on-font-lock)
   (add-hook 'org-mode-hook
 	    (lambda ()

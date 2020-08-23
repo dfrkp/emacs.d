@@ -1,4 +1,4 @@
-;;; i-tex.el --- iedit, WindMove
+;;; i-tex.el --- tex
 ;;; Commentary:
 
 ;;; Code:

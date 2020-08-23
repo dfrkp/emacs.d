@@ -1,4 +1,4 @@
-;;; i-org.el --- iedit, WindMove
+;;; i-org.el --- org-mode
 ;;; Commentary:
 
 ;;; Code:
@@ -67,6 +67,11 @@
 	'(ascii reveal html latex md))
   )
 
+(req-package org-ref
+  :ensure t
+  :require org
+)
+
 (req-package ox-reveal
   :ensure t
   :require org
@@ -81,6 +86,7 @@
 
 (req-package plantuml-mode
   :ensure t
+  :require org
   :config
   (add-to-list
    'org-src-lang-modes '("plantuml" . plantuml))

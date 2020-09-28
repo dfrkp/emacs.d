@@ -96,5 +96,9 @@
 
 (set-frame-font "Inconsolata-14")
 
+(req-package emojify
+  :ensure t
+  :hook (after-init . global-emojify-mode))
+
 (provide 'i-look-and-feel)
 ;;; i-look-and-feel.el ends here

@@ -46,6 +46,9 @@
   (setq edit-server-new-frame nil)
   (edit-server-start))
 
+(req-package outshine
+  :ensure t)
+
 (provide 'i-editing)
 ;;; i-editing.el ends here
 

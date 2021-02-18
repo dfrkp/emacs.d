@@ -45,7 +45,6 @@
 			     (org-agenda-files :maxlevel . 9)))
   (setq org-outline-path-complete-in-steps nil)         ; Refile in a single go
   (setq org-refile-use-outline-path t)                  ; Show full paths for refiling
-  (setq initial-major-mode 'org-mode)
   ;;; support koma report (scrreprt)
   (with-eval-after-load 'ox-latex
     (add-to-list 'org-latex-classes
@@ -63,6 +62,10 @@
   ;;;                     [NO-DEFAULT-PACKAGES]
   (add-hook 'org-mode-hook 'auto-fill-mode)
   (add-hook 'org-mode-hook 'flyspell-mode)
+  (setq initial-buffer-choice (lambda ()
+				(org-agenda-list 1)
+				(delete-other-windows)
+				(get-buffer "*Org Agenda*")))
   (setq org-export-backends
 	'(ascii reveal html latex md))
   )

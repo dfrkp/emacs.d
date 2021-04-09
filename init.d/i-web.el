@@ -29,6 +29,7 @@
   :config
   (setq js2-basic-offset 2)
   (setq js2-strict-trailing-comma-warning nil)
+  (setq js2-strict-missing-semi-warning nil)
 
   (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
   (add-hook 'js2-mode-hook

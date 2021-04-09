@@ -19,6 +19,12 @@
   (with-eval-after-load 'company
     (company-flx-mode +1)))
 
+(req-package company-quickhelp
+  :ensure t
+  :require company
+  :config
+  (company-quickhelp-mode))
+
 (provide 'i-completion)
 ;;; i-completion.el ends here
 

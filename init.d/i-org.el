@@ -37,6 +37,8 @@
 	   "* TODO %?\n  SCHEDULED: %t")
 	  ("p" "Personal Todo" entry (file+headline "~/Dropbox/org/personal.org" "TODO-List")
 	   "* TODO %?\n  SCHEDULED: %t")
+	  ("m" "Meeting Notes" entry (file+headline "~/Dropbox/org/work.org" "Meetings")
+	   "* %? %t\n  Agenda:\n  - \n** First Topic")
 	  )
 	)
 

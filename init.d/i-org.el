@@ -23,6 +23,11 @@
 	      (local-set-key (kbd "<C-down>") 'outline-move-subtree-down)
 	      )
 	    )
+  (add-hook 'org-mode-hook 'auto-save-mode)
+  (add-hook 'org-agenda-mode-hook
+          (lambda ()
+            (add-hook 'auto-save-hook 'org-save-all-org-buffers nil t)
+            (auto-save-mode)))
   (setq org-return-follows-link t)
   (setq org-catch-invisible-edits "smart")
   (setq org-default-notes-file (concat org-directory "work.org"))
@@ -98,6 +103,17 @@
 
 (req-package htmlize
   :ensure t)
+
+(req-package org-trello
+  :ensure t
+  :require org
+  :config
+  (custom-set-variables '(org-trello-files '("castle-no9.org")))
+  (add-hook 'org-trello-mode
+	    (lambda ()
+	      (add-hook 'after-save-hook 'org-trello-sync-buffer nil)
+	      ))
+)
 
 (provide 'i-org)
 ;;; i-org.el ends here

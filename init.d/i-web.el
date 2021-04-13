@@ -6,40 +6,55 @@
 
 (req-package rjsx-mode
   :ensure t
-  :require flycheck
   :config
-  (add-to-list 'auto-mode-alist '("\\.\\(jsx?\\|tsx?\\)$" . rjsx-mode))
-  (setq-default flycheck-disabled-checkers
-  		(append flycheck-disabled-checkers
-  			'(javascript-jshint)))
-  (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
-  (defadvice js-jsx-indent-line (after js-jsx-indent-line-after-hack activate)
-    "Workaround sgml-mode and follow airbnb component style."
-    (save-excursion
-      (beginning-of-line)
-      (if (looking-at-p "^ +\/?> *$")
-  	  (delete-char sgml-basic-offset))))
-  )
+  (add-to-list 'auto-mode-alist '("\\.js.*$" . rjsx-mode))
+  (add-to-list 'auto-mode-alist '("\\.json$" . json-mode)))
 
-(req-package json-mode
-  :ensure t)
-
-(req-package js2-mode
+(req-package tide
   :ensure t
+  :require rjsx-mode company flycheck
   :config
-  (setq js2-basic-offset 2)
-  (setq js2-strict-trailing-comma-warning nil)
-  (setq js2-strict-missing-semi-warning nil)
+  (defun setup-tide-mode ()
+    (interactive)
+    (tide-setup)
+    (flycheck-mode +1)
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))
+    (eldoc-mode +1)
+    (tide-hl-identifier-mode +1)
+    (company-mode +1)
+    (set (make-local-variable 'company-backends)
+         '((company-tide company-files :with company-yasnippet)
+           (company-dabbrev-code company-dabbrev))))
+  ;; formats the buffer before saving - we use prettier-js though
+  ;; (add-hook 'before-save-hook 'tide-format-before-save)
+  (add-hook 'typescript-mode-hook #'setup-tide-mode)
+  (add-hook 'js-mode-hook #'setup-tide-mode)
+  (add-hook 'rjsx-mode-hook #'setup-tide-mode)
+  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
+)
 
-  (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
-  (add-hook 'js2-mode-hook
-	    (lambda () (progn
-			 (set-variable 'indent-tabs-mode nil))))
-  )
+(req-package web-mode
+  :ensure t
+  :require tide company
+  :config
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+  (add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
+  (flycheck-add-mode 'typescript-tslint 'web-mode)
+  (flycheck-add-next-checker 'typescript-tslint 'jsx-tide 'append)
+  (add-hook 'web-mode-hook 'company-mode)
+  (add-hook 'web-mode-hook #'turn-on-smartparens-mode t)
+  (setq web-mode-enable-auto-quoting nil)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-attr-indent-offset 2)
+  (setq web-mode-attr-value-indent-offset 2))
 
 (req-package prettier-js
   :ensure t
-  :require js2-mode
+  :require tide
   :config
   (defun my/use-prettier-from-node-modules ()
     (let* ((root (locate-dominating-file
@@ -50,8 +65,8 @@
 					    root))))
       (when (and prettier (file-executable-p prettier))
 	(setq-local prettier-js-command prettier))))
-  (add-hook 'js2-mode-hook #'my/use-prettier-from-node-modules)
-  (add-hook 'js2-mode-hook 'prettier-js-mode))
+  (add-hook 'tide-mode-hook #'my/use-prettier-from-node-modules)
+  (add-hook 'tide-mode-hook 'prettier-js-mode))
 
 (req-package kubernetes
   :ensure t)
@@ -66,7 +81,6 @@
   :config
   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
-;;; Terraform
 (req-package terraform-mode
   :ensure t
   :config
@@ -74,34 +88,12 @@
 
 (req-package company-terraform
   :ensure t
-  :require terraform-mode
+  :require terraform-mode company
   :config
   (company-terraform-init))
 
 (req-package docker
   :ensure t)
-
-(req-package tide
-  :ensure t
-  :require company js2-mode flycheck
-  :config
-  (defun setup-tide-mode ()
-    (interactive)
-    (tide-setup)
-    (flycheck-mode +1)
-    (setq flycheck-check-syntax-automatically '(save mode-enabled))
-    (eldoc-mode +1)
-    (tide-hl-identifier-mode +1)
-    ;; company is an optional dependency. You have to
-    ;; install it separately via package-install
-    ;; `M-x package-install [ret] company`
-    (company-mode +1))
-  ;; formats the buffer before saving
-  (add-hook 'before-save-hook 'tide-format-before-save)
-  (add-hook 'typescript-mode-hook #'setup-tide-mode)
-  (add-hook 'js2-mode-hook #'setup-tide-mode)
-  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
-  )
 
 (req-package graphql-mode
   :ensure t)

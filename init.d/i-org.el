@@ -38,7 +38,7 @@
 	  ("p" "Personal Todo" entry (file+headline "~/Dropbox/org/personal.org" "TODO-List")
 	   "* TODO %?\n  SCHEDULED: %t")
 	  ("m" "Meeting Notes" entry (file+headline "~/Dropbox/org/work.org" "Meetings")
-	   "* %? %t\n  Agenda:\n  - \n** First Topic")
+	   "* %? $T\n  Participants:\n  - \n  Agenda:\n  - \n** First Topic")
 	  )
 	)
 
@@ -46,7 +46,7 @@
   (setq org-export-docbook-xslt-proc-command "xsltproc --output %o %s %i")
   (setq org-export-docbook-xsl-fo-proc-command "fop %i %o")
 
-  (setq org-agenda-files (list (concat org-directory "work.org")))
+  (setq org-agenda-files (list org-directory ))
 
   (setq org-refile-targets '((nil :maxlevel . 9)
 			     (org-agenda-files :maxlevel . 9)))

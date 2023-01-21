@@ -69,7 +69,6 @@ installed."
 
 ;; init.d
 (dolist (i-file '(
-		  "i-ido-smex.el"
 		  "i-completion.el"
 		  "i-look-and-feel.el"
 		  "i-auto-update.el"

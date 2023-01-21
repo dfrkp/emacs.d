@@ -57,6 +57,8 @@
 (req-package outshine
   :ensure t)
 
+(global-set-key (kbd "C-x w") 'window-swap-states)
+
 (provide 'i-editing)
 ;;; i-editing.el ends here
 

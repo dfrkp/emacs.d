@@ -11,6 +11,9 @@
   (setq magit-process-popup-time 2)
   (setq magit-last-seen-setup-instructions "1.4.0"))
 
+(req-package forge
+  :ensure t
+  :after magit)
 
 (provide 'i-vcs)
 ;;; i-vcs.el ends here

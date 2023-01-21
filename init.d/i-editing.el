@@ -4,9 +4,21 @@
 ;;; Code:
 (require 'req-package)
 
+(setq ispell-program-name "hunspell")
+;; ;; below two lines reset the the hunspell to it STOPS querying locale!
+;; (setq ispell-local-dictionary "en_US") ; "en_US" is key to lookup in `ispell-local-dictionary-alist`
+;; (setq ispell-local-dictionary-alist
+;;       '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)))
+;; ;; new variable `ispell-hunspell-dictionary-alist' is defined in Emacs
+;; ;; If it's nil, Emacs tries to automatically set up the dictionaries.
+;; (when (boundp 'ispell-hunspell-dictionary-alist)
+;;   (setq ispell-hunspell-dictionary-alist ispell-local-dictionary-alist))
+
 (req-package iedit
   :ensure t
   :bind (("C-;" . iedit-mode)))
+
+(winner-mode 1)
 
 ;; WindMove
 (windmove-default-keybindings)
@@ -14,11 +26,7 @@
 (global-set-key (kbd "C-S-F") 'windmove-right)
 (global-set-key (kbd "C-S-P") 'windmove-up)
 (global-set-key (kbd "C-S-N") 'windmove-down)
-
-(req-package autopair
-  :ensure t
-  :config
-  (autopair-global-mode))
+(electric-pair-mode)
 
 (req-package move-text
   :ensure t

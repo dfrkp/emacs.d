@@ -8,6 +8,7 @@
   :ensure t
   :config
   (global-flycheck-mode 1)
+  (setq flycheck-terraform-tflint-executable "tflint -f junit")
   (setq flycheck-highlighting-mode 'symbols)
   (add-hook 'cc-mode-hook 'flycheck-mode)
   (eval-after-load 'flycheck-mode

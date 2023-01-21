@@ -76,6 +76,11 @@
   :config
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
 
+(req-package earthfile-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("Earthfile\\'" . earthfile-mode)))
+
 (req-package dockerfile-mode
   :ensure t
   :config

@@ -98,6 +98,9 @@
 
 (req-package emojify
   :ensure t
+  :bind (("C-M-SPC" . emojify-insert-emoji))
+  :config
+  (emojify-set-emoji-styles '(unicode))
   :hook (after-init . global-emojify-mode))
 
 (provide 'i-look-and-feel)

@@ -34,11 +34,6 @@
       )
   )
 
-(req-package treemacs-icons-dired
-  :after dired
-  :ensure t
-  :config (treemacs-icons-dired-mode))
-
 (req-package dired-toggle
   :ensure t
   :defer t

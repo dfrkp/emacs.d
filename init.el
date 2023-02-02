@@ -8,9 +8,9 @@
 (setq package-enable-at-startup nil)
 
 ;; global config
-(defconst dropbox-directory "~/Dropbox/")
+(defconst sync-directory "~/Dropbox/")
 (defconst my-init-dir "~/.emacs.d/init.d")
-(setq bookmark-default-file (concat dropbox-directory "org/bookmarks.bmk"))
+(setq bookmark-default-file (concat sync-directory "org/bookmarks.bmk"))
 
 ;; Windows special treatment
 (if (string-equal system-type "windows-nt")

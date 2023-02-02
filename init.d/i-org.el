@@ -11,7 +11,7 @@
 	 ("C-c a" . org-agenda)
 	 ("C-c b" . org-iswitchb))
   :config
-  (setq org-directory (concat dropbox-directory "org/"))
+  (setq org-directory (concat sync-directory "org/"))
   (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
   (add-to-list 'auto-mode-alist '("\\.txt\\'" . org-mode))
   (add-hook 'org-agenda-mode-hook (lambda () (hl-line-mode 1)))

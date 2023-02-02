@@ -33,14 +33,275 @@
   (setq org-default-notes-file (concat org-directory "work.org"))
   (setq org-capture-templates
 	'(
-	  ("t" "Todo" entry (file+headline "~/Dropbox/org/work.org" "TODO-List")
-	   "* TODO %?\n  SCHEDULED: %t")
-	  ("p" "Personal Todo" entry (file+headline "~/Dropbox/org/personal.org" "TODO-List")
-	   "* TODO %?\n  SCHEDULED: %t")
-	  ("m" "Meeting Notes" entry (file+headline "~/Dropbox/org/work.org" "Meetings")
-	   "* %? $T\n  Participants:\n  - \n  Agenda:\n  - \n** First Topic")
-	  )
-	)
+	  ;; Tasks
+	  ("t" "Tasks")
+	  ("tw" "Work Task" entry (file+headline "work.org" "Tasks")
+	   "* TODO %?
+  SCHEDULED: %t
+  :LOGBOOK:
+  - State \"TODO\"       from \"\"           %U
+  :END:" :empty-lines 1)
+	  ("tg" "Gruene Task" entry (file+headline "gruene.org" "Aufgaben")
+	   "* TODO %?
+  SCHEDULED: %t
+  :LOGBOOK:
+  - State \"TODO\"       from \"\"           %U
+  :END:" :empty-lines 1)
+	  ("tp" "Personal Todo" entry (file+headline "personal.org" "Tasks")
+	   "* TODO %?
+  SCHEDULED: %t
+  :LOGBOOK:
+  - State \"TODO\"       from \"\"           %U
+  :END:" :empty-lines 1)
+	  ("ta" "Algea Todo" entry (file+headline "algea.org" "Tasks")
+	   "* TODO %?
+  SCHEDULED: %t
+  :LOGBOOK:
+  - State \"TODO\"       from \"\"           %U
+  :END:" :empty-lines 1)
+	  ("tu" "Ultivue Todo" entry (file+headline "ultivue.org" "Tasks")
+	   "* TODO %?
+  SCHEDULED: %t
+  :LOGBOOK:
+  - State \"TODO\"       from \"\"           %U
+  :END:" :empty-lines 1)
+	  ;; Meetings
+	  ("m" "Meetings")
+	  ("mw" "Work Meeting Notes" entry (file+headline "work.org" "Meetings")
+	   "* %^{subject} %^{meeting date}U
+
+   Participants: %^{meeting with}
+
+   %?" :immediate-finish t :jump-to-captured t :empty-lines 1)
+
+	  ("ma" "Algea Meeting Notes" entry (file+headline "algea.org" "Meetings")
+	   "* %^{subject} %^{meeting date}U
+
+   Participants: %^{meeting with}
+
+   %?" :immediate-finish t :jump-to-captured t :empty-lines 1)
+
+	  ("mu" "Ultivue Meeting Notes" entry (file+headline "ultivue.org" "Meetings")
+	   "* %^{subject} %^{meeting date}U
+
+   Participants: %^{meeting with}
+
+   %?" :immediate-finish t :jump-to-captured t :empty-lines 1)
+
+	  ("mt" "Tech Interivew" entry (file+headline "algea.org" "Meetings")
+	   "* Tech Interview %^{candidate} %^{meeting date}U
+** Intro (if no intro call before)
+   - Motivation
+     - Where are you now and where do you want to go?
+   - Have you used next.js before?
+** Look around and run
+   : (-) negative observation
+   : (+) positive observation
+
+** Registration Form
+   - TASK: Open the registration form. A product owner got a data
+     privacy request to delete all personal data we have on a
+     particular user. Now he's asking you to give her a list of
+     systems she has to check out. Please use the code and the
+     environment you have here to find out.
+
+** Patient List
+   - TASK: Our patient engagement team wants to know the patients
+     that are in a given stage of our process. Please use the
+     mock_data.json as a database to create an endpoint in the
+     backend and then put a page in the frontend that allows our team
+     to select the stage and then shows a list of patients for that
+     stage.
+
+** Summary
+   - How would rate your own performance and how does it compare to
+     your usual work?
+     - 
+   - What skills and strengths of yours were you not able to show due
+     today?
+     - 
+     
+** Verdict
+" :immediate-finish t :jump-to-captured t :empty-lines 1)
+
+	  ("mf" "Full-Stack Intro" entry (file+headline "algea.org" "Meetings")
+	   "* [Intro|Full-Stack] %^{candidate} %^{meeting date}U
+** Candidate intro
+   -
+** Tech quiz:
+   : Perfect answer (*), Answered correctly (+)
+   : didn't know or wrong answer (-), close, but not quite (~)
+ 
+   - *( )* Can you use React without JSX?
+     - *( )* How?
+   - *( )* What does useState return?
+   - *( )* When would you use useContext?
+   - *( )* What's docker-compose good for?
+   - *( )* Explain the difference between a merge and a rebase in git?
+   - *( )* What does REST stand for?
+   - *( )* How is a REST API different from a GraphQL API?
+     - *( )* Can you think of a possible disadvantage of GraphQL?
+   - *( )* Do you know the SOLID principles?
+     - *( )* Could you explain one of OLID?
+   - *( )* What is AWS RDS used for?
+   - *( )* What's the responsibility of a scrum master?
+
+** Work environment / your questions?
+   - What are you looking for in a new team other than the tech stack?
+** What other questions do you have for us?
+   -
+** Other notes:
+   - Salary:
+   - Availability:
+** Overall
+   -
+" :immediate-finish t :jump-to-captured t :empty-lines 1)
+
+	  ("ms" "SDET Intro" entry (file+headline "algea.org" "Meetings")
+	   "* [Intro|SDET] %^{candidate} %^{meeting date}U
+** Candidate intro
+   -
+
+** Tech quiz
+   : Please provide one sentence answers, it's okay to no know many
+   : questions, this is intentionally broad
+     
+   : Perfect answer (*), Answered correctly (+), didn't know or wrong answer (-),
+   : close, but not quite (~)
+
+   - How do you select or locate an element in the DOM?
+
+   - *( )* In HTML, what is the difference between IDs and Classes?
+     : IDs are unique, classes not
+     : Each element can have only one ID, but multiple classes
+     : Each page can have only one element with that ID, but multiple classes on the same element
+     : IDs are useful to find any single element, classes for any number of elements
+       
+   - *( )* What is the virtual DOM concept good for?
+     : preventing expensive re-rendering of the actual dom by comparing
+     : virtual DOM and actual DOM
+   - *( )* What's docker-compose good for?
+     : starting multiple containers / services / bringing up a whole environment
+   - *( )* Explain the difference between a merge and a rebase in
+     git?
+     : merge combines changes in a new commit that now has 2 parents;
+     : rebase moves changes to a new parent and achieves a linear history
+   - *( )* How is a REST API different from a GraphQL API?
+     : REST uses the HTTP methods to access resources (multiple endpoints);
+     : GraphQL uses POST to send a query to the server which responds with
+     : the exact data that was requested (prevents over-fetching)
+     - *( )* Can you think of a possible disadvantage of GraphQL?
+       : It breaks fundamental concepts of the WEB that we rely on for caching
+       : and hence belongs to the same group as web sockets (great advantages,
+       : but no longer compatible with all the basic ideas of the web)
+       : Example: Universities often use proxy servers that cache pages that
+       : students are accessing, so that not every student has to fetch the
+       : page again (not possible with GraphQL
+   - *( )* What is the difference between statement and branch
+     coverage?
+     : Statement coverage is the number of lines / statements executed vs
+     : the total number of lines / statement; branch coverage also takes into
+     : account conditionals (every condition has to be covered to achieve 100%)
+     - *( )* Bonus: How is path coverage different?
+       : Path coverage goes beyond branch coverage by considering all possible
+       : combinations of the conditionals
+
+** Elaborate questions
+   : There is no right answer here, but we would like to understand how you
+   : are thinking about these issues
+     
+   - When would you use which e2e technology? (Selenium vs Cypress
+     vs TestCafe vs Puppeteer vs Playwrigth)
+   - What strategies would you recommend to prevent flaky tests?
+   - What approach do you consider most effective to test
+     performance and reliability?
+   - When would you use Cucumber / BDD?
+   - What's the role of a SDET in scrum?
+       
+** Work environment / your questions?
+   - What are you looking for in a new team other than the tech stack?
+** What other questions do you have for us?
+   -
+** Other notes:
+   - Salary:
+   - Availability:
+** Overall
+   -
+" :immediate-finish t :jump-to-captured t :empty-lines 1)
+
+
+	  ("md" "DevOps Intro" entry (file+headline "algea.org" "Meetings")
+	   "* [Intro|DevOps] %^{candidate} %^{meeting date}U
+
+*** Candidate intro
+    - 
+*** Tech quiz:
+    : Perfect answer (*), Answered correctly (+)
+    : didn't know or wrong answer (-), close, but not quite (~)
+ 
+
+    - Kubernetes
+      - *( )* What is the difference between a DeamonSet and a
+        StatefulSet?
+      - *( )* When to use different clusters vs different namespaces?
+      - *( )* K8s updates; How to prepare for it, what to watch out
+        for? 
+	- What was the worst thing that happened to you when upgrading
+          K8s? 
+    - Terraform
+      - *( )* Best practices for structuring terraform code. When to
+        use a module?
+      - *( )* What would you recommend to manage the state?
+	- *( )* Why not Terraform Cloud?
+    - *( )* Which CI/CD solutions you have worked with and what's your
+      favorite, and why? 
+      - *( )* Have you used GitHub Actions?
+
+*** What other questions do you have for us?
+    - 
+*** Other notes:
+    - Salary: 
+    - Availability: 
+*** Overall
+    - 
+" :immediate-finish t :jump-to-captured t :empty-lines 1)
+
+ ("ml" "Leader Intro" entry (file+headline "algea.org" "Meetings")
+	   "* [Intro|Lead] %^{candidate} %^{meeting date}U
+
+*** Candidate intro
+    - 
+
+** Tech quiz:
+   : Perfect answer (*), Answered correctly (+)
+   : didn't know or wrong answer (-), close, but not quite (~)
+ 
+   - *( )* How do Angular and React differ in their approach to rendering the DOM?
+   - *( )* How's docker-compose different than Kubernetes?
+   - *( )* How is a REST API different from a GraphQL API?
+
+*** Questions:
+
+   - Tell me about a direct report who was able to take on a new role
+     thanks to your coaching and leadership?
+   - What was the biggest organizational change you had to deal with
+     so far?
+   - Can you think of a difficult decision to let someone go?
+   - How do you make a technical decision if you do not have
+     experience with one of the options?
+*** What other questions do you have for us?
+    - 
+*** Other notes:
+    - Salary: 
+    - Availability: 
+*** Overall
+    - 
+" :immediate-finish t :jump-to-captured t :empty-lines 1)
+
+
+	))
+
+
 
   (setq org-log-into-drawer t)
   (setq org-export-docbook-xslt-proc-command "xsltproc --output %o %s %i")
@@ -106,16 +367,6 @@
 (req-package htmlize
   :ensure t)
 
-(req-package org-trello
-  :ensure t
-  :require org
-  :config
-  (custom-set-variables '(org-trello-files '("castle-no9.org")))
-  (add-hook 'org-trello-mode
-	    (lambda ()
-	      (add-hook 'after-save-hook 'org-trello-sync-buffer nil)
-	      ))
-)
 
 (provide 'i-org)
 ;;; i-org.el ends here
